@@ -1,23 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jackson | Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="script.js"></script>
 </head>
-
 <body>
-    <main class="container">
-        <img src="jackson.png" alt="Jackson" class="jackson">
+  <header class="top-header">
+    <div class="container nav-flex">
+      <h1 class="logo">Jackson</h1>
+      <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </header>
 
-        <h1>JACKSON</h1>
-
-        <div class="links">
-            <a href="https://github.com/Jacksonmlol" target="_blank">GitHub</a>
-            <span class="email">No Gmail Sorry.</span>
-            <a href="https://open.spotify.com/user/zjohxk8y1vm0c4dlwezgkridp" target="_blank">Spotify</a>
+  <main>
+    <section class="hero container">
+      <div class="hero-content">
+        <h2>Hello — I’m <span class="highlight">Jackson</span></h2>
+        <p class="subtitle">Web Developer • Programmer • Christian</p>
+        <p class="description">
+          I'm a developer based in Virginia, USA. I specialize in building web applications and exploring the depths of C++ and Java programming.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/jacksonmlol" target="_blank" class="btn secondary">GitHub</a>
         </div>
-    </main>
+      </div>
+    </section>
+
+    <section class="projects container">
+      <h3>Featured Projects</h3>
+      <div class="project-grid">
+        <div class="card">
+          <div class="card-image">
+             <img src="assets/ogpixel.png" alt="OGPIXEL">
+          </div>
+          <div class="card-content">
+            <h4>OGPIXEL</h4>
+            <p>A Minecraft minigame server supporting both Java and Eaglercraft clients.</p>
+            <a href="https://ogpixel.org" target="_blank" class="project-link">Visit Site →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-image">
+             <img src="assets/puppyadventures.png" alt="Puppy Adventures">
+          </div>
+          <div class="card-content">
+            <h4>Puppy Adventures</h4>
+            <p>A desktop game built from scratch using C++ and the OpenGL graphics API.</p>
+            <span class="status">In Development</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about container">
+      <div class="about-box">
+        <h3>About Me</h3>
+        <p>
+         I love making websites and games! When I'm not coding, I enjoy Basketball, playing games, and spending time with my family.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Jackson. Built with passion & purpose.</p>
+    </div>
+  </footer>
 </body>
 </html>
