@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/* minimal terminal style - inline styles in index.html */
+=======
 :root {
   --bg: #ffffff;
   --text: #1a1a1a;
@@ -380,3 +383,4 @@ footer {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+>>>>>>> c9bb9cca2b7b2ee3cf2a6a5f427a81a09af04d1d
