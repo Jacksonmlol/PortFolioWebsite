@@ -3,8 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jackson's Personal Page</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Jackson — Portfolio</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --fg: #1a1a1a;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #d1d5db;
+      --card-bg: #ffffff;
+      --card-shadow: rgba(0,0,0,0.06);
+      --muted: #6b7280;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius: 8px;
+      --max-width: 960px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111827;
+        --fg: #e5e7eb;
+        --accent: #60a5fa;
+        --accent-hover: #93c5fd;
+        --border: #374151;
+        --card-bg: #1f2937;
+        --card-shadow: rgba(0,0,0,0.3);
+        --muted: #9ca3af;
+      }
+    }
+    body.dark {
+      --bg: #111827;
+      --fg: #e5e7eb;
+      --accent: #60a5fa;
+      --accent-hover: #93c5fd;
+      --border: #374151;
+      --card-bg: #1f2937;
+      --card-shadow: rgba(0,0,0,0.3);
+      --muted: #9ca3af;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.7;
+      padding: 0 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--fg);
+      z-index: 100;
+      box-shadow: 0 1px 3px var(--card-shadow);
+      transition: background 0.2s;
+    }
+    .theme-toggle:hover { background: var(--border); }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .nav a:hover { border-color: var(--accent); text-decoration: none; }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 3rem;
+      gap: 1.5rem;
+    }
+    .hero-avatar {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      box-shadow: 0 4px 20px var(--card-shadow);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .hero .title {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+    .hero .tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--fg);
+      max-width: 700px;
+    }
+    .about-text p + p { margin-top: 1rem; }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .skill-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--fg);
+      transition: border-color 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 700px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 1px 3px var(--card-shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 12px var(--card-shadow);
+      transform: translateY(-2px);
+    }
+    .project-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .project-card .desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .project-card .links { font-size: 0.85rem; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.25rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+    .contact-links a:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.75rem; }
+      .hero-avatar { width: 120px; height: 120px; }
+      .nav { gap: 1rem; }
+      .nav a { font-size: 0.85rem; }
+      .section h2 { font-size: 1.25rem; }
+    }
+
+    @media print {
+      .theme-toggle { display: none; }
+      body { background: #fff; color: #000; }
+      .project-card { border: 1px solid #ccc; box-shadow: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -12,109 +251,78 @@
 
   <div class="container">
 
-    <header class="site-header">
-      <h1 class="site-title"><a href="index.html">Jackson's Personal Site</a></h1>
-    </header>
-
     <nav class="nav">
-      <a href="computing.html">How I Do My Computing</a>
+      <a href="index.html">Home</a>
+      <a href="computing.html">Computing</a>
       <a href="projects.html">Projects</a>
       <a href="robotics.html">Robotics</a>
     </nav>
 
     <div class="hero">
-      <img src="res/me.png" alt="Jackson" width="320" height="400">
-      <p>
-        I am a programmer interested in free software, systems, and low-level computing.
-        This is my personal site. Views here are my own.
-      </p>
+      <img src="res/me.png" alt="Jackson" class="hero-avatar" width="320" height="400">
+      <h1>Jackson</h1>
+      <p class="title">Programmer &middot; Free Software Advocate &middot; Systems Tinkerer</p>
+      <p class="tagline">I build things with C, C++, Java, Python, and plain HTML. Interested in low-level computing, game dev, and open source.</p>
     </div>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3><a href="#recent" id="recent">Recent updates</a></h3>
-        <ul>
-          <li>
-            Added a new page on <a href="computing.html">how I do my computing</a>,
-            covering my setup, editors, and workflow.
-          </li>
-          <li>
-            Added a new page on <a href="robotics.html">robotics</a>, covering my robotic things.
-          </li>
-        </ul>
-
-        <h3><a href="projects.html" id="projects">Projects</a></h3>
-        <ul>
-          <li>
-            <a href="https://github.com/Jacksonmlol/PortFolioWebsite">This website</a>
-            &mdash; written in plain HTML, no frameworks or tracking.
-          </li>
-          <li>Minecraft client experiments &mdash; custom clients written in Java.</li>
-          <li>Small games and tools written in C and C++.</li>
-        </ul>
+    <div class="section">
+      <h2>About</h2>
+      <div class="about-text">
+        <p>I am a programmer interested in free software, systems programming, and low-level computing. I believe in simple, understandable code over complex abstractions, and I avoid frameworks and unnecessary dependencies wherever possible.</p>
+        <p>I use Arch Linux with i3 on a ThinkPad T490. My main editor is Emacs, though I also reach for Vim, Helix, and VSCodium depending on the task. This site is written in plain HTML and CSS with no tracking or JavaScript frameworks.</p>
       </div>
-
-      <div class="card">
-        <h2>Notes</h2>
-        <dl class="note">
-          <dt><h3>Why I use Arch Linux <small>2025</small></h3></dt>
-          <dd><p>Arch gives me full control over my system. No bloat, no decisions made for me. The rolling release model means I always have up-to-date software.</p></dd>
-
-          <dt><h3>On editors <small>2025</small></h3></dt>
-          <dd><p>I have settled on Emacs as my main editor. The customization is unmatched. I still reach for Vim when I want something fast and minimal.</p></dd>
-
-          <dt><h3>Why I started programming <small>2025</small></h3></dt>
-          <dd><p>I realized you could tell a computer exactly what to do. That idea pulled me in and I have been building things ever since.</p></dd>
-        </dl>
-      </div>
-
     </div>
 
-    <div class="grid">
-
-      <div class="card">
-        <p><strong>The four pillars of my computing:</strong><br>
-        free software, plain text, keyboard shortcuts, minimal dependencies.</p>
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">Arch Linux</span>
+        <span class="skill-tag">Emacs</span>
+        <span class="skill-tag">Vim</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">i3 / dwm</span>
+        <span class="skill-tag">Embedded (ESP32)</span>
       </div>
-
-      <div class="card">
-        <h3>Don't use proprietary software if you can avoid it</h3>
-        <p>Every proprietary program is a potential restriction on your freedom. Where a free alternative exists, use it.</p>
-      </div>
-
     </div>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3>Browsers</h3>
-        <p>I use <a href="https://brave.com">Brave</a> as my main browser for its built-in ad and tracker blocking.</p>
+    <div class="section">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3><a href="https://github.com/Jacksonmlol/PortFolioWebsite">Personal Website</a></h3>
+          <div class="desc">This site. Written in plain HTML and CSS, no frameworks, no tracking.</div>
+          <div class="links"><a href="https://github.com/Jacksonmlol/PortFolioWebsite">Source</a></div>
+        </div>
+        <div class="project-card">
+          <h3><a href="https://github.com/Jacksonmlol/shriek">shriek</a></h3>
+          <div class="desc">A chat app originally in Python, rewritten in C for speed and fun.</div>
+          <div class="links"><a href="https://github.com/Jacksonmlol/shriek">Source</a></div>
+        </div>
+        <div class="project-card">
+          <h3><a href="https://github.com/Jacksonmlol/NoSleep">NoSleep</a></h3>
+          <div class="desc">Moves your mouse every 15 seconds to prevent sleep. Made for Arch Linux.</div>
+          <div class="links"><a href="https://github.com/Jacksonmlol/NoSleep">Source</a></div>
+        </div>
+        <div class="project-card">
+          <h3>Minecraft Client Experiments</h3>
+          <div class="desc">Custom Minecraft clients written in Java.</div>
+        </div>
       </div>
-
-      <div class="card">
-        <h3><a href="computing.html">How I Do My Computing</a></h3>
-        <p>Full details on my setup: hardware, OS, editors, languages, and workflow.</p>
-      </div>
-
     </div>
 
-    <div class="card full">
-      <h3><a href="#notes" id="notes">Notes</a></h3>
-      <p>Occasional notes on computing, software, and things I find interesting.</p>
-
-      <hr>
-
-      <h3><a href="#links" id="links">Links</a></h3>
-      <ul>
-        <li><a href="https://jackson.ogpixel.org">Jackson's Personal Page</a></li>
-        <li><a href="https://archlinux.org">Arch Linux</a></li>
-      </ul>
+    <div class="section">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="https://github.com/Jacksonmlol">GitHub</a>
+        <a href="https://jackson.ogpixel.org">jackson.ogpixel.org</a>
+      </div>
     </div>
-
-    <footer class="site-footer">
-      <p>Copyright &copy; 2026 Jackson &mdash; Verbatim copying and redistribution of this entire page are permitted provided this notice is preserved.</p>
-    </footer>
 
   </div>
 
