@@ -1,27 +1,65 @@
-
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Robotics</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link media="all" href="styles.css" type="text/css" rel="stylesheet" />
-    <link rel="shortcut icon" href="/common/rms.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robotics &mdash; Jackson</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1>Robotics</h1>
-    <p>I made a robot on 4/23/26 it was the super fun and thats about all I have expierence of.</p>
-    <img src="res/robot.png" width = "500" height "400">
-    <p>His name is bobert.</p>
-    <p>I made him into a war machine on 4/24/26.</p>
-    <img src="res/robot2.jpg" width = "500" height "500">
-    <p>Made my esp32 show a picture of richard stallman on 4/25/26</p>
-    <img src="res/stallman.png" width = "500" height "500">
-    <br>
-    <a href="index.html">Home</a>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">&#9790;</button>
+
+  <div class="container">
+
+    <header class="site-header">
+      <h1 class="site-title"><a href="index.html">Jackson's Personal Site</a></h1>
+    </header>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="computing.html">How I Do My Computing</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+
+    <div class="content">
+
+      <h1>Robotics</h1>
+
+      <p>I made a robot on 4/23/26. It was super fun and that's about all the experience I have.</p>
+      <img src="res/robot.png" alt="Bobert the robot">
+      <p>His name is Bobert.</p>
+
+      <p>I made him into a war machine on 4/24/26.</p>
+      <img src="res/robot2.jpg" alt="Robot war machine">
+
+      <p>Made my ESP32 show a picture of Richard Stallman on 4/25/26.</p>
+      <img src="res/stallman.png" alt="Richard Stallman on ESP32">
+
     </div>
 
-</body>
+    <footer class="site-footer">
+      <p><a href="index.html">Home</a></p>
+    </footer>
 
+  </div>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      var stored = localStorage.getItem('theme');
+      if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark');
+        btn.innerHTML = '&#9788;';
+      }
+      btn.addEventListener('click', function() {
+        document.body.classList.toggle('dark');
+        var isDark = document.body.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+      });
+    })();
+  </script>
+
+</body>
 </html>

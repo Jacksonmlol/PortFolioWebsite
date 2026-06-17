@@ -2,120 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Projects - Jackson</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects &mdash; Jackson</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <h3 class="c1">Jackson's Projects</h3>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">&#9790;</button>
 
-  <div class="columnt1">
-    <p>
-      <a href="index.html">Home</a> |
+  <div class="container">
+
+    <header class="site-header">
+      <h1 class="site-title"><a href="index.html">Jackson's Personal Site</a></h1>
+    </header>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
       <a href="computing.html">How I Do My Computing</a>
-    </p>
+      <a href="robotics.html">Robotics</a>
+    </nav>
+
+    <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-align:center;">Projects</h1>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Featured Projects</h3>
+        <ul>
+          <li class="project-item">
+            <a href="https://github.com/Jacksonmlol/PortFolioWebsite">Personal Website</a>
+            <div class="desc">This site. Written in plain HTML and CSS, no frameworks.</div>
+          </li>
+          <li class="project-item">
+            <strong>shriek</strong> &mdash; written in C
+            <div class="desc">A little chat app originally made in Python; rewritten in C because C is fast and fun and I was bored.</div>
+            <div class="desc"><a href="https://github.com/Jacksonmlol/shriek">github.com/Jacksonmlol/shriek</a></div>
+          </li>
+          <li class="project-item">
+            <strong>NoSleep</strong>
+            <div class="desc">Moves your mouse every 15 seconds so your computer doesn't go to sleep. Made on Arch Linux for Arch Linux systems.</div>
+            <div class="desc"><a href="https://github.com/Jacksonmlol/NoSleep">github.com/Jacksonmlol/NoSleep</a></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>In Progress</h3>
+        <ul>
+          <li class="project-item">
+            <strong>Game Development</strong>
+            <div class="desc">Experimenting with small games and rendering systems.</div>
+          </li>
+          <li class="project-item">
+            <strong>Systems Programming</strong>
+            <div class="desc">Learning more about memory, processes, and OS behavior.</div>
+          </li>
+        </ul>
+
+        <h3>Ideas</h3>
+        <ul>
+          <li>Minimal text editor</li>
+          <li>Custom shell</li>
+          <li>Lightweight game engine</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Philosophy</h3>
+        <p>I prefer simple, understandable code over complex abstractions.</p>
+        <p>Most of my projects avoid frameworks and unnecessary dependencies.</p>
+        <p>I build things mainly to learn how they work internally.</p>
+      </div>
+
+      <div class="card">
+        <h3>Technologies</h3>
+        <ul>
+          <li>C / C++</li>
+          <li>Java</li>
+          <li>Python</li>
+          <li>HTML / CSS</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="card full">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="https://github.com/Jacksonmlol">GitHub Profile</a></li>
+      </ul>
+    </div>
+
+    <footer class="site-footer">
+      <p>Copyright &copy; 2026 Jackson &mdash; Verbatim copying and redistribution permitted.</p>
+    </footer>
+
   </div>
 
-  <br style="clear:both">
-
-  <div class="column1">
-    <h3>Featured Projects</h3>
-    <ul>
-      <li>
-        <p>
-          <a href="https://github.com/Jacksonmlol/PortFolioWebsite">
-            Personal Website
-          </a><br>
-          This site. Written in plain HTML and CSS, no frameworks.
-        </p>
-      </li>
-
-      <li>
-        <p>
-          shriek written in C<br>
-          A little chat app that was original made in python and I made it in C because C is fast and fun and I was bored.
-	  https://github.com/Jacksonmlol/shriek
-        </p>
-      </li>
-
-      <li>
-        <p>
-          NoSleep<br>
-          moves your mouse every 15 seconds so your computer doesnt go asleep this was made in arch linux and for arch linux systems.
-	  https://github.com/Jacksonmlol/NoSleep
-        </p>
-      </li>
-    </ul>
-  </div>
-
-  <div class="column2">
-    <h3>In Progress</h3>
-    <ul>
-      <li>
-        <p>
-          Game Development<br>
-          Experimenting with small games and rendering systems.
-        </p>
-      </li>
-
-      <li>
-        <p>
-          Systems Programming<br>
-          Learning more about memory, processes, and OS behavior.
-        </p>
-      </li>
-    </ul>
-
-    <h3>Ideas</h3>
-    <ul>
-      <li>Minimal text editor</li>
-      <li>Custom shell</li>
-      <li>Lightweight game engine</li>
-    </ul>
-  </div>
-
-  <div class="column3">
-    <h3>Philosophy</h3>
-    <p>
-      I prefer simple, understandable code over complex abstractions.
-    </p>
-
-    <p>
-      Most of my projects avoid frameworks and unnecessary dependencies.
-    </p>
-
-    <p>
-      I build things mainly to learn how they work internally.
-    </p>
-
-    <hr>
-
-    <h3>Technologies</h3>
-    <ul>
-      <li>C / C++</li>
-      <li>Java</li>
-      <li>Python</li>
-      <li>HTML / CSS</li>
-    </ul>
-  </div>
-
-  <div class="rest">
-    <hr>
-
-    <h3>Links</h3>
-    <ul>
-      <li>
-        <a href="https://github.com/Jacksonmlol">GitHub Profile</a>
-      </li>
-    </ul>
-
-    <hr>
-
-    <p>
-      Copyright &copy; 2025 Jackson<br>
-      Verbatim copying and redistribution permitted.
-    </p>
-  </div>
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      var stored = localStorage.getItem('theme');
+      if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark');
+        btn.innerHTML = '&#9788;';
+      }
+      btn.addEventListener('click', function() {
+        document.body.classList.toggle('dark');
+        var isDark = document.body.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+      });
+    })();
+  </script>
 
 </body>
 </html>
