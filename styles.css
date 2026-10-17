@@ -1,10 +1,12 @@
 @font-face {
 	font-family: "Lexend Deca";
-	src: url("/web/20260612021407im_/https://orangeman.sh/LexendDeca-Regular.ttf") format("truetype");
+	src: url("fonts/LexendDeca-Regular.ttf") format("truetype");
+	font-display: swap;
 }
 @font-face {
 	font-family: "JetBrains Mono";
-	src: url("/web/20260612021407im_/https://orangeman.sh/JetBrainsMono-Regular.ttf") format("truetype");
+	src: url("fonts/JetBrainsMono-Regular.ttf") format("truetype");
+	font-display: swap;
 }
 
 :root {
@@ -24,11 +26,21 @@
 }
 
 body {
-	font-family: "JetBrains Mono";
+	font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	overflow-x: hidden;
 	margin: 0;
+}
+
+h1 {
+	font-size: 1.8rem;
+	margin: 0 0 10px 0;
+}
+
+h2 {
+	font-size: 1.15rem;
+	margin: 0 0 5px 0;
 }
 
 a {
@@ -68,18 +80,19 @@ a {
 
 .movie {
 	display: flex;
-	gap: 20px;
+	gap: 24px;
 	align-items: flex-start;
-	background-color: var(--bg-color);
-	border: 1px dashed var(--secondary-text-color);
+	border: 1px solid var(--secondary-text-color);
 	padding: 20px;
-	margin-bottom: 30px;
+	margin-bottom: 25px;
 }
 
 .movie-poster {
-	width: 200px;
-	height: auto;
+	width: 170px;
+	aspect-ratio: 2 / 3;
+	object-fit: cover;
 	flex-shrink: 0;
+	border: 1px solid var(--secondary-text-color);
 }
 
 .movie-body {
@@ -89,17 +102,19 @@ a {
 
 .movie-title {
 	margin: 0;
+	color: var(--text-color);
 }
 
 .movie-meta {
 	color: var(--secondary-text-color);
-	margin-top: 5px;
-	margin-bottom: 15px;
+	margin: 5px 0 14px 0;
+	font-size: 0.85rem;
 }
 
 .movie-rant {
 	margin: 0;
-	line-height: 1.6;
+	max-width: 60ch;
+	line-height: 1.7;
 	white-space: pre-line;
 }
 
@@ -109,7 +124,13 @@ a {
 	}
 
 	.movie-poster {
-		width: 100%;
+		width: 60%;
+		max-width: 220px;
+	}
+
+	.main {
+		max-width: 100%;
+		padding: 20px;
 	}
 }
 
