@@ -66,6 +66,53 @@ a {
 	max-height: 50px;
 }
 
+.movie {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	background-color: var(--bg-color);
+	border: 1px dashed var(--secondary-text-color);
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.movie-poster {
+	width: 200px;
+	height: auto;
+	flex-shrink: 0;
+}
+
+.movie-body {
+	flex: 1;
+	min-width: 0;
+}
+
+.movie-title {
+	margin: 0;
+}
+
+.movie-meta {
+	color: var(--secondary-text-color);
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.movie-rant {
+	margin: 0;
+	line-height: 1.6;
+	white-space: pre-line;
+}
+
+@media (max-width: 700px) {
+	.movie {
+		flex-direction: column;
+	}
+
+	.movie-poster {
+		width: 100%;
+	}
+}
+
 /*
      FILE ARCHIVED ON 02:14:07 Jun 12, 2026 AND RETRIEVED FROM THE
      INTERNET ARCHIVE ON 03:43:30 Oct 09, 2026.
